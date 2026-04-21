@@ -1,0 +1,42 @@
+﻿@{ 
+    Layout = null; 
+    ViewData["Title"] = "Tri-Tier Volume App"; 
+}
+
+<div style="font-family: Arial, sans-serif; background: linear-gradient(135deg, #4facfe, #00f2fe); display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0;">
+    <div style="background: white; padding: 25px; border-radius: 20px; width: 340px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); margin: 20px;">
+        
+        <h2 style="text-align: center; color: #333; margin-bottom: 5px;">Tri-Tier Block</h2>
+        
+        <p style="text-align: center; font-size: 14px; color: #555; background: #f8f9fa; padding: 10px; border-radius: 8px; border: 1px dashed #4facfe; margin-bottom: 20px; line-height: 1.6;">
+            <b>Formula:</b><br>
+            V<sub>total</sub> = (L<sub>1</sub>W<sub>1</sub>H<sub>1</sub>) + (L<sub>2</sub>W<sub>2</sub>H<sub>2</sub>) + (L<sub>3</sub>W<sub>3</sub>H<sub>3</sub>)
+        </p>
+        
+        <form method="post" action="/Home/Calculate">
+            <h4 style="text-align: center; margin-bottom: 5px; color: #4facfe;">Layer 1</h4>
+            <input name="l1" value="@ViewBag.L1" type="number" step="any" placeholder="Length (L₁)" style="width: 100%; margin: 5px 0; padding: 8px; border-radius: 8px; border: 1px solid #ccc;" required />
+            <input name="w1" value="@ViewBag.W1" type="number" step="any" placeholder="Width (W₁)" style="width: 100%; margin: 5px 0; padding: 8px; border-radius: 8px; border: 1px solid #ccc;" required />
+            <input name="h1" value="@ViewBag.H1" type="number" step="any" placeholder="Height (H₁)" style="width: 100%; margin: 5px 0; padding: 8px; border-radius: 8px; border: 1px solid #ccc;" required />
+
+            <h4 style="text-align: center; margin-bottom: 5px; color: #4facfe;">Layer 2</h4>
+            <input name="l2" value="@ViewBag.L2" type="number" step="any" placeholder="Length (L₂)" style="width: 100%; margin: 5px 0; padding: 8px; border-radius: 8px; border: 1px solid #ccc;" required />
+            <input name="w2" value="@ViewBag.W2" type="number" step="any" placeholder="Width (W₂)" style="width: 100%; margin: 5px 0; padding: 8px; border-radius: 8px; border: 1px solid #ccc;" required />
+            <input name="h2" value="@ViewBag.H2" type="number" step="any" placeholder="Height (H₂)" style="width: 100%; margin: 5px 0; padding: 8px; border-radius: 8px; border: 1px solid #ccc;" required />
+
+            <h4 style="text-align: center; margin-bottom: 5px; color: #4facfe;">Layer 3</h4>
+            <input name="l3" value="@ViewBag.L3" type="number" step="any" placeholder="Length (L₃)" style="width: 100%; margin: 5px 0; padding: 8px; border-radius: 8px; border: 1px solid #ccc;" required />
+            <input name="w3" value="@ViewBag.W3" type="number" step="any" placeholder="Width (W₃)" style="width: 100%; margin: 5px 0; padding: 8px; border-radius: 8px; border: 1px solid #ccc;" required />
+            <input name="h3" value="@ViewBag.H3" type="number" step="any" placeholder="Height (H₃)" style="width: 100%; margin: 5px 0; padding: 8px; border-radius: 8px; border: 1px solid #ccc;" required />
+
+            <button type="submit" style="width: 100%; padding: 12px; border: none; background: #4facfe; color: white; border-radius: 10px; margin-top: 15px; font-weight: bold; cursor: pointer; font-size: 16px;">Calculate Volume</button>
+        </form>
+
+        @if (ViewBag.Total != null)
+        {
+            <div style="margin-top: 20px; text-align: center; font-size: 18px; color: #2ecc71; font-weight: bold; border-top: 2px solid #f1f1f1; padding-top: 15px;">
+                Total Volume: @ViewBag.Total cm³
+            </div>
+        }
+    </div>
+</div>
